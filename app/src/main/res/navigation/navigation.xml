@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/listNotesFragment">
+
+    <fragment
+        android:id="@+id/listNotesFragment"
+        tools:layout="@layout/fragment_list_notes"
+        android:name="com.example.mynotekeeper.fragment.ListNotesFragment"
+        android:label="Notes" >
+        <action
+            android:id="@+id/action_listNotesFragment_to_createNoteFragment"
+            app:destination="@id/createNoteFragment" />
+        <action
+            android:id="@+id/action_listNotesFragment_to_detailNoteFragment"
+            app:destination="@id/detailNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createNoteFragment"
+        tools:layout="@layout/fragment_create_note"
+        android:name="com.example.mynotekeeper.fragment.CreateNoteFragment"
+        android:label="Create Note" >
+        <action
+            android:id="@+id/action_createNoteFragment_to_listNotesFragment"
+            app:destination="@id/listNotesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailNoteFragment"
+        tools:layout="@layout/fragment_detail_note"
+        android:name="com.example.mynotekeeper.fragment.DetailNoteFragment"
+        android:label="Detail Note" >
+        <argument
+            android:name="itemNote"
+            app:argType="com.example.mynotekeeper.dataclasses.Note" />
+    </fragment>
+</navigation>

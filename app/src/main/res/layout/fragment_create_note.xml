@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="createNoteViewModel"
+            type="com.example.mynotekeeper.viewmodel.CreateNoteViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edit_not_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="course"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edit_note_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textPersonName"
+            android:hint="Title"
+            app:layout_constraintEnd_toEndOf="@+id/edit_not_course"
+            app:layout_constraintStart_toStartOf="@+id/edit_not_course"
+            app:layout_constraintTop_toBottomOf="@+id/edit_not_course" />
+
+        <EditText
+            android:id="@+id/edit_note_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Text"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/edit_note_title"
+            app:layout_constraintTop_toBottomOf="@+id/edit_note_title" />
+
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
+            android:text="Save"
+            android:onClick="@{()->createNoteViewModel.onSave()}"
+            android:background="@drawable/round_corner"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/edit_note_text"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_note_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

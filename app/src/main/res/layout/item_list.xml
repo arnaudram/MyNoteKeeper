@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemNote"
+            type="com.example.mynotekeeper.dataclasses.Note" />
+        <variable
+            name="itemNoteListener"
+            type="com.example.mynotekeeper.adapter.ItemListNoteListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="327dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:onClick="@{()->itemNoteListener.onClick(itemNote)}"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_note_course"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:gravity="start"
+                    android:hint="course"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="20sp"
+                    app:bind_course="@{itemNote}"
+                    app:layout_constraintBottom_toTopOf="@id/tv_note_tile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/constraint"
+                    tools:layout_editor_absoluteX="2dp"
+                    tools:layout_editor_absoluteY="2dp" />
+
+                <TextView
+                    android:id="@+id/tv_note_tile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_marginTop="4dp"
+                    android:hint="title"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    app:bind_title="@{itemNote}"
+                    app:layout_constraintEnd_toEndOf="@id/tv_note_course"
+                    app:layout_constraintStart_toStartOf="@id/tv_note_course"
+                    app:layout_constraintTop_toBottomOf="@id/tv_note_course" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="30dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="48dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
