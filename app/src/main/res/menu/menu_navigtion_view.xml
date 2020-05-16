@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<group
+    android:enabled="true"
+    android:visible="true"
+
+    android:checkableBehavior="single">
+    <item
+        android:id="@+id/listNotesFragment"
+
+        android:icon="@drawable/ic_list_black_24dp"
+       android:iconTint="@color/colorPrimaryDark"
+        android:title="Notes" />
+    <item
+        android:id="@+id/createNoteFragment"
+
+        android:icon="@drawable/ic_add_box_black_24dp"
+         android:iconTint="@color/colorPrimaryDark"
+
+        android:title="New Note"
+        />
+</group>
+</menu>
