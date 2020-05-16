@@ -30,4 +30,6 @@ interface NoteDao{
     fun insert(note: Note)
     @Query("SELECT * FROM Note_table")
     fun getAllNote():LiveData<List<Note>>
+    @Query("SELECT * FROM Note_table LIMIT 1")
+    fun getFirstItem():Note
 }
