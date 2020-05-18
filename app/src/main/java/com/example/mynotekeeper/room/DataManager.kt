@@ -32,4 +32,6 @@ interface NoteDao{
     fun getAllNote():LiveData<List<Note>>
     @Query("SELECT * FROM Note_table LIMIT 1")
     fun getFirstItem():Note
+    @Query("SELECT * FROM Note_table WHERE note_id==:noteId   ")
+    fun getNoteById(noteId:Long):Note
 }
