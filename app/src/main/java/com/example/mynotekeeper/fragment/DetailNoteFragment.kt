@@ -15,10 +15,12 @@ import com.example.mynotekeeper.dataclasses.Note
 import com.example.mynotekeeper.room.getSingleDataManager
 import com.example.mynotekeeper.viewmodel.DetailNoteViewModel
 import com.example.mynotekeeper.viewmodel.DetailNoteViewModelFactory
+import kotlin.properties.Delegates
 
 class DetailNoteFragment : Fragment() {
     lateinit var detailNoteViewModel: DetailNoteViewModel
 
+var notesSize=0
 
     lateinit var receidNote: Note
     override fun onCreateView(
@@ -48,19 +50,47 @@ class DetailNoteFragment : Fragment() {
               if (it){
                   //goto next item
                       detailNoteViewModel.getNextNote()
+                        requireActivity().invalidateOptionsMenu()
                   detailNoteViewModel.doneNextItem()
               }
          })
 
-        detailNoteViewModel.onPreviousEvent.observe(viewLifecycleOwner, Observer {
-            if (it){
-                detailNoteViewModel.getPreviousNote()
-                detailNoteViewModel.donePreviousItem()
-            }
+
+
+
+
+        detailNoteViewModel.allNote.observe(viewLifecycleOwner, Observer {
+            notesSize=it.size
         })
         setHasOptionsMenu(true)
 
+
+
         return binding.root
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+       val nextMenuItem=menu.findItem(R.id.action_next_note)
+
+        detailNoteViewModel.currentNotePosition.observe(viewLifecycleOwner, Observer {
+            enableNextAction(nextMenuItem,it,notesSize)
+
+        })
+
+        super.onPrepareOptionsMenu(menu)
+    }
+
+    private fun enablePreviousAction(menuItem: MenuItem?, currentNotePosition: Long?) {
+        menuItem?.let {
+            it.setEnabled(currentNotePosition!!>0)
+
+        }
+    }
+
+    private fun enableNextAction(menuItem: MenuItem?, currentNotePosition: Long?,notesSize:Int) {
+        menuItem?.let {
+            it.setEnabled(currentNotePosition!! <notesSize.minus(1))
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -77,10 +107,7 @@ class DetailNoteFragment : Fragment() {
                 detailNoteViewModel.nextItem()
                 true
             }
-            R.id.action_previous_note->{
-                detailNoteViewModel.previousItem()
-                true
-            }
+
             else -> super.onOptionsItemSelected(item)
         }
 

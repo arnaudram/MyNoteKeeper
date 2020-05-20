@@ -9,10 +9,9 @@
 
         android:title="Share Note"
         app:showAsAction="collapseActionView" />
-    <item android:title="Previous Note"
-        android:id="@+id/action_previous_note"
-        android:icon="@drawable/ic_skip_previous_white_24dp"
-        app:showAsAction="always"/>
+
+
+
     <item android:title="Next Note"
         android:id="@+id/action_next_note"
         android:icon="@drawable/ic_skip_next_white_24dp"

@@ -9,6 +9,16 @@ import kotlinx.coroutines.*
 class DetailNoteViewModel(application: Application, private val noteDao: NoteDao) :
     AndroidViewModel(application) {
 
+ val allNote by lazy {
+
+
+             noteDao.getAllNote()
+
+
+
+
+}
+
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
@@ -20,20 +30,42 @@ class DetailNoteViewModel(application: Application, private val noteDao: NoteDao
     val onNextEvent: LiveData<Boolean>
         get() = _onNextEvent
 
-    private var _onPreviousEvent = MutableLiveData<Boolean>()
+   /* private var _onPreviousEvent = MutableLiveData<Boolean>()
     val onPreviousEvent: LiveData<Boolean>
-        get() = _onNextEvent
+        get() = _onPreviousEvent*/
 
+
+    private var _currentNotePosition=MutableLiveData<Long>()
+             val currentNotePosition:LiveData<Long>
+                   get() = _currentNotePosition
     init {
         _onNextEvent.value = false
-        _onPreviousEvent.value=false
+       // _onPreviousEvent.value=false
+        //_currentNotePosition.value=0
+
     }
 
+  /*  fun getPreviousNote(){
+        uiScope.launch{
+            var newNote= withContext(Dispatchers.IO){
+                var currentNoteId = _currentNote.value?.note_id
+                val newNoteId = currentNoteId!! -1
+                return@withContext noteDao.getNoteById(newNoteId!!)
+            }
+            _currentNote.value = newNote
+            _currentNotePosition.value=_currentNotePosition.value?.minus(1)
+        }
+
+    }*/
+
+
     fun getNextNote() {
+        var currentNoteId = _currentNote.value?.note_id
+        val newNoteId = currentNoteId?.plus(1)
         uiScope.launch {
             val newNote = withContext(Dispatchers.IO) {
-                var currentNoteId = _currentNote.value?.note_id
-                var newNoteId = currentNoteId?.plus(1)
+
+
                 // val newNote=  noteDao.getNoteById(newNoteId!!)
                 //  noteFromDb.value=async { noteDao.getNoteById(newNoteId!!) }
                 return@withContext noteDao.getNoteById(newNoteId!!)
@@ -41,24 +73,17 @@ class DetailNoteViewModel(application: Application, private val noteDao: NoteDao
             }
 
             _currentNote.value = newNote
+            _currentNotePosition.value=_currentNotePosition.value?.plus(1)
 
         }
 
 
     }
-    fun getPreviousNote(){
-       uiScope.launch{
-           var newNote= withContext(Dispatchers.IO){
-               var currentNoteId = _currentNote.value?.note_id
-               var newNoteId = currentNoteId?.minus(1)
-               return@withContext noteDao.getNoteById(newNoteId!!)
-           }
-           _currentNote.value = newNote
-       }
-    }
+
 
     fun setCurrentNote(note: Note) {
         _currentNote.value = note
+        _currentNotePosition.value=note.note_id
     }
 
     fun nextItem() {
