@@ -19,6 +19,9 @@
 
     <item android:title="Delete Note"
         android:id="@+id/action_delete_note"
-        android:icon="@drawable/ic_delete_white_24dp"
+
+        app:showAsAction="collapseActionView"/>
+    <item android:title="Settings"
+        android:id="@+id/settingActivity"
         app:showAsAction="collapseActionView"/>
 </menu>

@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import com.example.mynotekeeper.R
 import com.example.mynotekeeper.databinding.FragmentDetailNoteBinding
 import com.example.mynotekeeper.dataclasses.Note
@@ -98,6 +101,8 @@ var notesSize=0
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController=activity?.findNavController(R.id.fragment)
+
         return when (item.itemId) {
             R.id.share_note -> {
                 shareNote()
@@ -108,7 +113,7 @@ var notesSize=0
                 true
             }
 
-            else -> super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)|| item.onNavDestinationSelected(navController!!)
         }
 
     }

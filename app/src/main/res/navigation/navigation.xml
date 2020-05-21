@@ -35,4 +35,9 @@
             android:name="itemNote"
             app:argType="com.example.mynotekeeper.dataclasses.Note" />
     </fragment>
+    <activity
+        android:id="@+id/settingActivity"
+        tools:layout="@layout/activity_setting"
+        android:name="com.example.mynotekeeper.settings.SettingActivity"
+        android:label="Setting" />
 </navigation>

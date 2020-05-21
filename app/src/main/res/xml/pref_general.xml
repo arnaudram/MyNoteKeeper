@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_display_name_defauft"
+        android:key="edit_preference_name"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        app:useSimpleSummaryProvider="true"
+        android:title="Display Name" />
+    <EditTextPreference
+        android:defaultValue="@string/pref_display_email_defauft"
+        android:key="edit_preference_email"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        app:useSimpleSummaryProvider="true"
+        android:title="Edit text preference" />
+    <ListPreference
+        android:defaultValue="@array/pref_default_favorites_social"
+        android:entries="@array/pref_entries_favorites_social"
+        android:entryValues="@array/pref_values_favorites_social"
+        android:key="list_pref_favorite_media"
+        app:useSimpleSummaryProvider="true"
+        android:title="@string/pref_favorite_social_media_title" />
+</PreferenceScreen>

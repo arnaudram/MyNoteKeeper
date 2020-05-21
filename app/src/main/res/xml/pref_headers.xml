@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:background="#F2ACA7B3"
+    android:layout="@layout/pref_layaut">
+    <Preference
+       android:fragment="com.example.mynotekeeper.settings.GeneralPreferenceFragment"
+        android:icon="@drawable/ic_info_white_24dp"
+        android:title="@string/pref_general_title">
+
+    </Preference>
+    <Preference
+        android:fragment="com.example.mynotekeeper.settings.NotificationPreferenceFragment"
+        android:icon="@drawable/ic_notifications_white_24dp"
+        android:title="@string/pref_notification_title">
+
+    </Preference>
+    <Preference
+        android:icon="@drawable/ic_sync_white_24dp"
+        android:title="@string/pref_dataSync_title">
+
+    </Preference>
+
+</PreferenceScreen>
