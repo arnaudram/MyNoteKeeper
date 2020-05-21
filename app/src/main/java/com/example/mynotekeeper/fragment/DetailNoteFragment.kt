@@ -1,6 +1,7 @@
 package com.example.mynotekeeper.fragment
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.*
@@ -12,17 +13,20 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.preference.PreferenceManager
 import com.example.mynotekeeper.R
 import com.example.mynotekeeper.databinding.FragmentDetailNoteBinding
 import com.example.mynotekeeper.dataclasses.Note
 import com.example.mynotekeeper.room.getSingleDataManager
 import com.example.mynotekeeper.viewmodel.DetailNoteViewModel
 import com.example.mynotekeeper.viewmodel.DetailNoteViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlin.properties.Delegates
 
 class DetailNoteFragment : Fragment() {
     lateinit var detailNoteViewModel: DetailNoteViewModel
-
+     lateinit var sharedPreferences: SharedPreferences
+    lateinit var binding: FragmentDetailNoteBinding
 var notesSize=0
 
     lateinit var receidNote: Note
@@ -31,12 +35,13 @@ var notesSize=0
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentDetailNoteBinding.inflate(inflater)
+         binding = FragmentDetailNoteBinding.inflate(inflater)
             binding.lifecycleOwner=this
         val application = requireNotNull(this.activity).application
         val noteDao = getSingleDataManager(application.applicationContext).noteDao
         val detailNoteViewModelFactory = DetailNoteViewModelFactory(application, noteDao)
 
+        sharedPreferences=PreferenceManager.getDefaultSharedPreferences(activity?.applicationContext)
         detailNoteViewModel =
             ViewModelProvider(this, detailNoteViewModelFactory)[DetailNoteViewModel::class.java]
 
@@ -105,7 +110,8 @@ var notesSize=0
 
         return when (item.itemId) {
             R.id.share_note -> {
-                shareNote()
+               // shareNote()
+                shareWith()
                 true
             }
             R.id.action_next_note -> {
@@ -115,6 +121,13 @@ var notesSize=0
 
             else -> super.onOptionsItemSelected(item)|| item.onNavDestinationSelected(navController!!)
         }
+
+    }
+
+    private fun shareWith() {
+
+        val shareWith=sharedPreferences.getString("list_pref_favorite_media","")
+        Snackbar.make(binding.root,"share with $shareWith",Snackbar.LENGTH_LONG).show()
 
     }
 

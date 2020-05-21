@@ -21,4 +21,8 @@
         android:title="New Note"
         />
 </group>
+    <item
+        android:id="@+id/settingActivity"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Settings" />
 </menu>

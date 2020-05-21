@@ -5,6 +5,7 @@
     <EditTextPreference
         android:defaultValue="@string/pref_display_name_defauft"
         android:key="edit_preference_name"
+
         android:selectAllOnFocus="true"
         android:singleLine="true"
         app:useSimpleSummaryProvider="true"
@@ -15,7 +16,7 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         app:useSimpleSummaryProvider="true"
-        android:title="Edit text preference" />
+        android:title="@string/email_address_title" />
     <ListPreference
         android:defaultValue="@array/pref_default_favorites_social"
         android:entries="@array/pref_entries_favorites_social"

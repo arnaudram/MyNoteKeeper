@@ -7,6 +7,7 @@
     <string name="pref_display_email_defauft">Your email</string>
     <string name="pref_favorite_social_media_title">Favorite Social Media</string>
     <string name="Enable_message_notification">Enable message notification</string>
+    <string name="email_address_title">Email Address</string>
 
     <string-array name="pref_entries_favorites_social">
         <item> Google+</item>
@@ -16,7 +17,7 @@
 
     <string-array name="pref_values_favorites_social">
         <item>http://plus.google.com</item>
-        <item>http://acebook.com</item>
+        <item>http://facebook.com</item>
         <item >http://twitter.com</item>
     </string-array>
 
