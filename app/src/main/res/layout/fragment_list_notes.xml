@@ -29,12 +29,13 @@
             android:id="@+id/floatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:backgroundTint="@color/colorPrimaryDark"
             android:layout_gravity="bottom|right"
+            style="@style/addFab"
             android:layout_margin="4dp"
+
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="@{()->listItemViewModel.onFabListener()}"
-            android:src="@drawable/ic_exposure_plus_1_white_24dp"
-            android:focusable="true" />
+           />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

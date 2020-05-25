@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,6 +6,19 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
+<!--        <item name="android:textSize">30sp</item>-->
 
+    </style>
+      <style name="courseName" parent="@android:style/TextAppearance.Material" tools:targetApi="lollipop">
+       <item name="android:textColor">@color/pluralsight_orange</item>
+          <item name="android:textStyle">bold</item>
+
+      </style>
+      <style name="addFab" parent="@style/Widget.Design.FloatingActionButton">
+          <item name="srcCompat">@drawable/ic_exposure_plus_1_white_24dp</item>
+          <item name="android:tint">@color/pluralsight_orange</item>
+          <item name="android:textStyle">bold</item>
+          <item name="android:textSize">25sp</item>
+          <item name="backgroundTint">@color/colorPrimary</item>
+      </style>
 </resources>
