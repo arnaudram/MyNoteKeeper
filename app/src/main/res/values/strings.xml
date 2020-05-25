@@ -9,6 +9,11 @@
     <string name="Enable_message_notification">Enable message notification</string>
     <string name="email_address_title">Email Address</string>
 
+    <string name="note_course"> Name:%1$s</string>
+    <string name="note_title"> Title:%1$s</string>
+    <string name="note_text"> Text:%1$s</string>
+
+
     <string-array name="pref_entries_favorites_social">
         <item> Google+</item>
         <item>Facebook</item>

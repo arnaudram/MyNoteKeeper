@@ -18,13 +18,13 @@
             android:id="@+id/detail_course"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            tools:text="course"
-            android:text="@{noteSelected.note_course}"
             android:gravity="center_horizontal"
+            android:text="@{@string/note_course(noteSelected.note_course)}"
+            android:textSize="30sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            tools:text="course" />
 
         <TextView
             android:id="@+id/detail_title"
@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             tools:text="Title"
-            android:text="@{noteSelected.note_title}"
+            android:textSize="25sp"
+            android:text="@{@string/note_title(noteSelected.note_title)}"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="@+id/detail_course"
             app:layout_constraintStart_toStartOf="@+id/detail_course"
@@ -44,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             tools:text="Text"
-            android:text="@{noteSelected.note_text}"
+            android:textSize="20sp"
+            android:text="@{@string/note_text(noteSelected.note_text)}"
             android:gravity="center_horizontal"
             app:layout_constraintEnd_toEndOf="@+id/detail_title"
             app:layout_constraintStart_toStartOf="@+id/detail_title"
@@ -55,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="100dp" />
+            app:layout_constraintGuide_begin="33dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline4"
@@ -77,6 +79,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_end="100dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="171dp"
+            android:foregroundTint="@color/pluralsight_orange"
+            android:backgroundTint="@color/colorPrimary"
+            android:foreground="@drawable/ic_assignment_black_24dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
+            app:layout_constraintStart_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
